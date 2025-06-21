@@ -8,10 +8,9 @@ class JobController {
 
     createJob = async (req, res) => {
         try {
-            const jobData = req.body;
-            const job = await this.jobService.createJob(jobData);
+            const job = await this.jobService.createJob(req.body);
             res.status(201).json({
-                status: "ok", data: job
+                status: "ok", messsage: "Job created successfully", data: job
             });
         } catch (error) {
             res.status(500).json({ status: "error", error: error.message });
@@ -20,8 +19,8 @@ class JobController {
 
     getJobs = async (req, res) => {
         try {
-            const jobs = await this.jobService.getJobs();
-            res.status(201).json({ status: "error", data: jobs });
+            const jobs = await this.jobService.getJobs(req.query);
+            res.status(201).json({ status: "ok", data: jobs });
         } catch (error) {
             res.status(500).json({ status: "error", error: error.message });
         }

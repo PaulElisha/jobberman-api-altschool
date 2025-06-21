@@ -11,7 +11,7 @@ const MONGODB_URI = process.env.MONGODB_URI;
 
 class App {
     constructor() {
-        this.Dbconnection = new connectDB();
+        this.dbConnected = new connectDB();
         this.app = express();
         this.initializeMiddlewares();
         this.initializeRoutes();

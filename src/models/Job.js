@@ -3,27 +3,23 @@ import { Schema, model } from "mongoose";
 const jobSchema = new Schema({
     title: {
         type: String,
-        required: true,
-        trim: true
+        required: true
     },
     description: {
         type: String,
-        required: true,
-        trim: true
+        required: true
     },
     location: {
         type: String,
-        required: true,
-        trim: true
+        required: true
     },
     salary: {
-        type: Number,
-        required: false
+        type: String,
+        required: true
     },
     company: {
         type: String,
-        required: true,
-        trim: true
+        required: true
     },
     role: {
         type: String,
@@ -53,7 +49,7 @@ const jobSchema = new Schema({
         type: Date,
         required: true
     },
-    webssite: {
+    website: {
         type: String,
         required: true,
     },
