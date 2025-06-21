@@ -1,10 +1,10 @@
-import { User } from '../model/User.js'
+import { User } from '../models/User.js'
 
 class UserService {
     constructor() { }
 
-    createUser = (user) => {
-        const foundOne = User.findOne({ email: user.email });
+    createUser = (data) => {
+        const foundOne = User.findOne({ email: data.email });
         if (foundOne) {
             throw new Error('User with this title already exists');
         }

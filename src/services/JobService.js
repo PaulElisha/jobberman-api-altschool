@@ -1,20 +1,20 @@
-import { Job } from '../model/Job.js'
+import { Job } from '../models/Job.js'
 
 class JobService {
     constructor() {
     }
 
-    createJob = (job) => {
-        const foundOne = Job.findOne({ title: job.title });
+    createJob = async (data) => {
+        const foundOne = await Job.findOne({ title: data.title });
         if (foundOne) {
             throw new Error('Job with this title already exists');
         }
-        const job = Job.create(job);
+        const job = await Job.create(job);
         return job
     }
 
-    getJobs = () => {
-        const jobs = Job.find({});
+    getJobs = async () => {
+        const jobs = await Job.find({});
         if (!jobs || jobs.length === 0) {
             throw new Error('No jobs found');
         }

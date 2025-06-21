@@ -3,13 +3,13 @@ import UserService from '../services/UserService.js';
 
 class UserController {
     constructor() {
-        this.jobService = new JobService();
+        this.userService = new UserService();
     }
 
-    createJob = async (req, res) => {
+    createUser = async (req, res) => {
         try {
             const jobData = req.body;
-            const job = await this.jobService.createJob(jobData);
+            const job = await this.userService.createJob(jobData);
             res.status(201).json({
                 status: "ok", data: job
             });
@@ -18,9 +18,9 @@ class UserController {
         }
     }
 
-    getJobs = async (req, res) => {
+    getUsers = async (req, res) => {
         try {
-            const jobs = await this.jobService.getJobs();
+            const jobs = await this.userService.getJobs();
             res.status(201).json({ status: "error", data: jobs });
         } catch (error) {
             res.status(500).json({ status: "error", error: error.message });
@@ -28,4 +28,4 @@ class UserController {
     }
 }
 
-export default JobControllers;
+export default UserController;
