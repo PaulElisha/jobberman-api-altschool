@@ -13,7 +13,7 @@ class JobController {
                 status: "ok", messsage: "Job created successfully", data: job
             });
         } catch (error) {
-            res.status(500).json({ status: "error", error: error.message });
+            res.status(error.statusCode).json({ status: "error", error: error.message });
         }
     }
 
@@ -22,7 +22,7 @@ class JobController {
             const jobs = await this.jobService.getJobs(req.query);
             res.status(201).json({ status: "ok", data: jobs });
         } catch (error) {
-            res.status(500).json({ status: "error", error: error.message });
+            res.status(error.statusCode).json({ status: "error", error: error.message });
         }
     }
 }

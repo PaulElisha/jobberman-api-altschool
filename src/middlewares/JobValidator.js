@@ -1,7 +1,7 @@
 import joi from 'joi';
 
 class JobValidator {
-    validateJobCreation = async (req, res, next) => {
+    validateJobCreation = (req, res, next) => {
         try {
             const schema = joi.object({
                 title: joi.string().required(),

@@ -8,22 +8,34 @@ class UserController {
 
     createUser = async (req, res) => {
         try {
-            const jobData = req.body;
-            const job = await this.userService.createJob(jobData);
+            const { user, token } = await this.userService.createUser(req.body);
             res.status(201).json({
-                status: "ok", data: job
+                success: true, message: "User created successfully", data: { user: user, token: token }
             });
         } catch (error) {
-            res.status(500).json({ status: "error", error: error.message });
+            console.error("Error in createUser:", error);
+            res.status(error.statusCode).json({ success: false, error: error.message });
+        }
+    }
+
+
+    loginUser = async (req, res) => {
+        try {
+            const { user, token } = await this.userService.loginUser(req.body);
+            res.status(200).json({
+                success: true, message: "User logged in successfully", data: { user: user, token: token }
+            });
+        } catch (error) {
+            res.status(error.statusCode).json({ success: false, error: error.message });
         }
     }
 
     getUsers = async (req, res) => {
         try {
-            const jobs = await this.userService.getJobs();
-            res.status(201).json({ status: "error", data: jobs });
+            const users = await this.userService.getUsers();
+            res.status(201).json({ success: true, data: users });
         } catch (error) {
-            res.status(500).json({ status: "error", error: error.message });
+            res.status(error.statusCode).json({ success: false, error: error.message });
         }
     }
 }

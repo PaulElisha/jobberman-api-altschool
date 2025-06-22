@@ -9,8 +9,9 @@ class UserRouter {
     }
 
     initializeRoutes() {
+        this.router.post('/signup', this.userController.createUser);
+        this.router.post('/login', this.userController.loginUser);
         this.router.get('/', this.userController.getUsers);
-        this.router.post('/', this.userController.createUser);
     }
 }
 

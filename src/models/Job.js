@@ -24,12 +24,12 @@ const jobSchema = new Schema({
     role: {
         type: String,
         required: true,
-        enum: ['Full-time', 'Part-time', 'Contract', 'Internship'],
+        enum: ['full-time', 'part-time', 'contract', 'internship'],
     },
     mode: {
         type: String,
         required: true,
-        enum: ['On-site', 'Remote', 'Hybrid'],
+        enum: ['on-site', 'remote', 'hybrid'],
     },
     experience: {
         type: String,
